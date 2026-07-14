@@ -59,9 +59,7 @@ class OdreClient:
                 if attempt < _MAX_ATTEMPTS:
                     self._sleep(float(attempt))
                     continue
-                raise SourceError(
-                    f"ODRE API failed after {_MAX_ATTEMPTS} attempts: {last_error}"
-                )
+                raise SourceError(f"ODRE API failed after {_MAX_ATTEMPTS} attempts: {last_error}")
             if response.status_code >= 400:
                 raise SourceError(
                     f"ODRE API returned {response.status_code}: {response.text[:200]}"
