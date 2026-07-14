@@ -1,0 +1,65 @@
+# The scheduler: GitHub Actions cron runs one ingestion cycle every 2 hours.
+# The single-file warehouse is persisted between runs via the Actions cache
+# (rolling key), so each run is incremental; if the cache is ever evicted the
+# next run simply re-bootstraps its window. The quality report lands in the
+# job summary and the warehouse is downloadable as an artifact.
+name: Pipeline
+
+on:
+  schedule:
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v8.3.2
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: uv sync
+
+      - name: Restore warehouse
+        uses: actions/cache/restore@v6
+        with:
+          path: data/courant.duckdb
+          key: warehouse-${{ github.run_id }}
+          restore-keys: |
+            warehouse-
+
+      - name: Run one cycle
+        run: uv run courant run --db data/courant.duckdb --report data/report.md
+
+      - name: Publish quality report
+        if: always()
+        run: |
+          if [ -f data/report.md ]; then
+            cat data/report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          uv run courant status --db data/courant.duckdb >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Save warehouse
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: data/courant.duckdb
+          key: warehouse-${{ github.run_id }}
+
+      - name: Upload warehouse artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: warehouse
+          path: |
+            data/courant.duckdb
+            data/report.md
+          retention-days: 7

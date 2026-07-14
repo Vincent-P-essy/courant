@@ -1,0 +1,4 @@
+# Momus (the AI code reviewer) settings for this repository.
+[momus]
+max_findings = 10
+budget_usd = 1.5
