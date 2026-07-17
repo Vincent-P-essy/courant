@@ -7,7 +7,7 @@ with any DuckDB client.
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from types import TracebackType
 from typing import Any
@@ -16,6 +16,8 @@ import duckdb
 
 from courant.errors import WarehouseError
 from courant.schema import FIELD_NAMES, FIELDS
+
+UTC = timezone.utc
 
 _SQL_TYPES = {"timestamp": "TIMESTAMPTZ", "integer": "INTEGER", "text": "VARCHAR"}
 

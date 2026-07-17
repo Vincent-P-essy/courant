@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import click
@@ -16,6 +16,8 @@ from courant.config import CourantConfig
 from courant.errors import CourantError
 from courant.pipeline import RunOutcome, run_once
 from courant.warehouse import Warehouse
+
+UTC = timezone.utc
 
 _DB_DEFAULT = Path("data/courant.duckdb")
 

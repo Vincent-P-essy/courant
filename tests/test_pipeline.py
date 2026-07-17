@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -11,6 +11,8 @@ from courant.config import CourantConfig
 from courant.errors import SourceError
 from courant.pipeline import compute_window, run_once
 from courant.warehouse import Warehouse
+
+UTC = timezone.utc
 
 NOW = datetime(2026, 7, 14, 12, 0, tzinfo=UTC)
 

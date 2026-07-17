@@ -10,12 +10,14 @@ from __future__ import annotations
 
 import time
 from collections.abc import Callable
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from typing import Any
 
 import httpx
 
 from courant.errors import SourceError
+
+UTC = timezone.utc
 
 _MAX_ATTEMPTS = 3
 

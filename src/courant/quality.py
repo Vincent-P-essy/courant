@@ -12,10 +12,12 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from typing import Any
 
 from courant.schema import BALANCE_FLOWS, FIELDS, PRODUCTION_SOURCES, is_observed
+
+UTC = timezone.utc
 
 #: A day has 96 quarter-hours; DST transition days have 92 or 100.
 _VALID_DAY_QUARTERS = {92, 96, 100}

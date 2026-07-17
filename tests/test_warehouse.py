@@ -1,9 +1,11 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from conftest import BASE_MOMENT, make_row, quarter_hours
 from courant.warehouse import Warehouse
+
+UTC = timezone.utc
 
 
 def test_upsert_counts_inserts_and_updates(warehouse: Warehouse) -> None:

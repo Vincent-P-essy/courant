@@ -1,11 +1,13 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from conftest import BASE_MOMENT, make_row, quarter_hours
 from courant.quality import CheckResult, QualityReport, check_batch, check_warehouse
 from courant.transform import run_transforms
 from courant.warehouse import Warehouse
+
+UTC = timezone.utc
 
 
 def _by_name(checks: list[CheckResult]) -> dict[str, CheckResult]:

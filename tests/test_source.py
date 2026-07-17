@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 import httpx
 import pytest
@@ -9,6 +9,8 @@ import respx
 from conftest import WINDOW_RECORDS
 from courant.errors import SourceError
 from courant.source import OdreClient
+
+UTC = timezone.utc
 
 BASE = "https://odre.opendatasoft.com"
 EXPORT = f"{BASE}/api/explore/v2.1/catalog/datasets/eco2mix-national-tr/exports/json"

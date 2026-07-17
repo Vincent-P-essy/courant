@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "A production-shaped open-data pipeline for the French electricity grid: data contracts, an incremental DuckDB warehouse, and a read API — state fits in one file."
 readme = "README.md"
 license = { text = "MIT" }
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 authors = [{ name = "Vincent Plessy", email = "vincent.plessy12@gmail.com" }]
 keywords = ["data-engineering", "duckdb", "open-data", "pipeline", "data-quality", "energy"]
 classifiers = [
@@ -16,6 +16,7 @@ classifiers = [
   "Environment :: Console",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
@@ -54,14 +55,14 @@ packages = ["src/courant"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py310"
 src = ["src", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM", "RET", "RUF"]
 
 [tool.mypy]
-python_version = "3.11"
+python_version = "3.10"
 strict = true
 files = ["src/courant"]
 

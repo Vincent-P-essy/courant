@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -10,6 +10,8 @@ from conftest import quarter_hours
 from courant.api import create_app
 from courant.transform import run_transforms
 from courant.warehouse import Warehouse
+
+UTC = timezone.utc
 
 
 def _quarter_aligned_now() -> datetime:

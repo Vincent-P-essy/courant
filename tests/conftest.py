@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -11,6 +11,8 @@ import pytest
 
 from courant.schema import parse_record
 from courant.warehouse import Warehouse
+
+UTC = timezone.utc
 
 DATA_DIR = Path(__file__).parent / "data"
 

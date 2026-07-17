@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 from conftest import make_row, quarter_hours
 from courant.transform import run_transforms
 from courant.warehouse import Warehouse
+
+UTC = timezone.utc
 
 
 def test_marts_are_built_in_order(warehouse: Warehouse) -> None:

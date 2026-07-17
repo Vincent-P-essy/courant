@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 from conftest import OBSERVED_RECORDS, WINDOW_RECORDS
 from courant.schema import (
@@ -10,6 +10,8 @@ from courant.schema import (
     is_observed,
     parse_record,
 )
+
+UTC = timezone.utc
 
 
 def test_real_observed_records_pass_the_contract() -> None:

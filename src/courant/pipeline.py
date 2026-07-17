@@ -13,7 +13,7 @@ from __future__ import annotations
 import json
 import time
 from dataclasses import dataclass, field
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from courant.config import CourantConfig
@@ -23,6 +23,8 @@ from courant.schema import parse_record
 from courant.source import OdreClient
 from courant.transform import run_transforms
 from courant.warehouse import Warehouse
+
+UTC = timezone.utc
 
 
 @dataclass(slots=True)

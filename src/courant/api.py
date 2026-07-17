@@ -7,7 +7,7 @@ state to manage.
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +17,8 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 
 from courant import __version__
+
+UTC = timezone.utc
 
 _DESCRIPTION = (
     "Quarter-hourly data for the French electricity grid (consumption, "
