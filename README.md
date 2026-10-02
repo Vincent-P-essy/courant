@@ -21,6 +21,12 @@ late-revision handling, a typed contract with physical sanity checks, an
 idempotent warehouse, versioned SQL transforms, a run ledger, a freshness
 SLO, and a read API** — each with tests.
 
+## Execution preview
+
+![courant execution](docs/screenshots/execution.png)
+
+Local execution of `python -m pytest -v --tb=short tests/test_quality.py tests/test_warehouse.py`. The input and output shown come from the repository example or test fixtures. [Verification](docs/verification.md).
+
 ## How it works
 
 ```mermaid

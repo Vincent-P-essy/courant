@@ -1,0 +1,36 @@
+$ python -m pytest -v --tb=short tests/test_quality.py tests/test_warehouse.py
+======================================= test session starts ========================================
+platform linux -- Python 3.12.14, pytest-8.4.2, pluggy-1.6.0 -- python
+cachedir: .pytest_cache
+rootdir: courant
+configfile: pyproject.toml
+plugins: anyio-4.15.1, asyncio-1.4.0, respx-0.23.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 22 items
+
+tests/test_quality.py::test_clean_batch_passes_everything PASSED                             [  4%]
+tests/test_quality.py::test_rejections_warn_then_fail_on_ratio PASSED                        [  9%]
+tests/test_quality.py::test_duplicate_timestamps_fail PASSED                                 [ 13%]
+tests/test_quality.py::test_off_grid_timestamps_warn PASSED                                  [ 18%]
+tests/test_quality.py::test_empty_window_warns PASSED                                        [ 22%]
+tests/test_quality.py::test_range_violation_warns_with_example PASSED                        [ 27%]
+tests/test_quality.py::test_balance_violation_warns PASSED                                   [ 31%]
+tests/test_quality.py::test_balance_skips_rows_with_missing_components PASSED                [ 36%]
+tests/test_quality.py::test_forecast_rows_are_exempt_from_observed_checks PASSED             [ 40%]
+tests/test_quality.py::test_report_status_aggregation PASSED                                 [ 45%]
+tests/test_quality.py::test_report_markdown_and_json PASSED                                  [ 50%]
+tests/test_quality.py::test_freshness_thresholds PASSED                                      [ 54%]
+tests/test_quality.py::test_freshness_fails_on_empty_warehouse PASSED                        [ 59%]
+tests/test_quality.py::test_day_completeness PASSED                                          [ 63%]
+tests/test_quality.py::test_day_completeness_detects_gaps PASSED                             [ 68%]
+tests/test_warehouse.py::test_upsert_counts_inserts_and_updates PASSED                       [ 72%]
+tests/test_warehouse.py::test_upsert_revises_values PASSED                                   [ 77%]
+tests/test_warehouse.py::test_empty_upsert_is_a_noop PASSED                                  [ 81%]
+tests/test_warehouse.py::test_watermark_ignores_forecast_rows PASSED                         [ 86%]
+tests/test_warehouse.py::test_run_ledger_roundtrip PASSED                                    [ 90%]
+tests/test_warehouse.py::test_last_runs_orders_newest_first PASSED                           [ 95%]
+tests/test_warehouse.py::test_context_manager_closes PASSED                                  [100%]
+
+======================================== 22 passed in 1.79s ========================================
+
+Exit: 0
